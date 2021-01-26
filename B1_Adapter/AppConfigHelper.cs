@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration.EnvironmentVariables;
 using Microsoft.Extensions.Configuration.FileExtensions;
 using Microsoft.Extensions.Configuration.Json;
 
-namespace A2_Factory
+namespace B1_Adapter
 {
     public class AppConfigHelper
     {
@@ -22,17 +22,12 @@ namespace A2_Factory
             .Build();            
         }
 
-        public static string GetSimpleAnimalType()
-        {
-            return config["AnimalType"];
-        }
-
-        public static string GetLoggerFactoryName()
+        private static string GetAdapterName()
         {
             string factoryName = null;
             try
             {
-                factoryName = config["LoggerFactory"];
+                factoryName = config["AdapterName"];
             }
             catch (Exception ex)
             {
@@ -42,33 +37,9 @@ namespace A2_Factory
             return factoryName;
         }
 
-        public static object GetLoggerFactoryInstance()
+        public static object GetAdpterInstance()
         {
-            string assemblyName = GetLoggerFactoryName();
-            Type type = Type.GetType(assemblyName);
-
-            var instance = Activator.CreateInstance(type);
-            return instance;
-        }
-
-        public static string GetSkinrFactoryName()
-        {
-            string factoryName = null;
-            try
-            {
-                factoryName = config["SkinFactory"];
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return factoryName;
-        }
-
-        public static object GetSkinFactoryInstance()
-        {
-            string assemblyName = GetSkinrFactoryName();
+            string assemblyName = GetAdapterName();
             Type type = Type.GetType(assemblyName);
 
             var instance = Activator.CreateInstance(type);

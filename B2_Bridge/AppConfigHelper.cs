@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration.EnvironmentVariables;
 using Microsoft.Extensions.Configuration.FileExtensions;
 using Microsoft.Extensions.Configuration.Json;
 
-namespace A2_Factory
+namespace B2_Bridge
 {
     public class AppConfigHelper
     {
@@ -22,53 +22,46 @@ namespace A2_Factory
             .Build();            
         }
 
-        public static string GetSimpleAnimalType()
-        {
-            return config["AnimalType"];
-        }
-
-        public static string GetLoggerFactoryName()
+        public static string GetImageFormatName()
         {
             string factoryName = null;
             try
             {
-                factoryName = config["LoggerFactory"];
+                factoryName = config["RefinedAbstraction"];
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
             return factoryName;
         }
 
-        public static object GetLoggerFactoryInstance()
+        public static object GetImageInstance()
         {
-            string assemblyName = GetLoggerFactoryName();
+            string assemblyName = AppConfigHelper.GetImageFormatName();
             Type type = Type.GetType(assemblyName);
 
             var instance = Activator.CreateInstance(type);
             return instance;
         }
 
-        public static string GetSkinrFactoryName()
+        public static string GetEnvName()
         {
             string factoryName = null;
             try
             {
-                factoryName = config["SkinFactory"];
+                factoryName = config["ConcreteImplementor"];
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
             return factoryName;
         }
 
-        public static object GetSkinFactoryInstance()
+        public static object GetEnvInstance()
         {
-            string assemblyName = GetSkinrFactoryName();
+            string assemblyName = AppConfigHelper.GetEnvName();
             Type type = Type.GetType(assemblyName);
 
             var instance = Activator.CreateInstance(type);
