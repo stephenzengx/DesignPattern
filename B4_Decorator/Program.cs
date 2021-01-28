@@ -4,6 +4,7 @@ namespace B4_Decorator
 {
     public class Program
     {
+        //装饰者模式，在重写的方法里面 添加新的东西 (被装饰的对象作为基类被继承)
         public static void Main(string[] args)
         {
             Component component = new Window();
