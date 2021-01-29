@@ -20,6 +20,9 @@ namespace B5_Facade
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// 第一版
+        /// </summary>
         public static void InitializeVersion()
         {
             //FileReader reader = new FileReader();             // 文件读取类

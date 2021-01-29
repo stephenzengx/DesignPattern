@@ -5,7 +5,7 @@ using System.Text;
 namespace B5_Facade
 {
     /// <summary>
-    /// 加密外观类1
+    /// 加密外观类2
     /// </summary>
     public class EncryptFacadeNew :AbstractEncryptFacade
     {
